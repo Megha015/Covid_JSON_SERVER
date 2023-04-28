@@ -1,0 +1,72 @@
+<div class="example-container mat-elevation-z8">
+  <h2>Corona Virus Cases Details</h2>
+  <div class="example-loading-shade" *ngIf="isLoadingResults">
+    <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+  </div>
+  <div class="button-row">
+    <a mat-flat-button color="primary" [routerLink]="['/cases']"
+      ><mat-icon>list</mat-icon></a
+    >
+  </div>
+  <mat-card class="example-card">
+    <mat-card-header>
+      <mat-card-title
+        ><h2>{{ cases.name }}</h2></mat-card-title
+      >
+      <mat-card-subtitle>{{ cases.age }} year old</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <dl>
+        <div class="row">
+          <dt class="label">Gender:</dt>
+          <dd class="value">{{ cases.gender }}</dd>
+        </div>
+        <div class="row">
+          <dt class="label">Address:</dt>
+          <dd class="value">{{ cases.address }}</dd>
+        </div>
+        <div class="row">
+          <dt class="label">City:</dt>
+          <dd class="value">{{ cases.city }}</dd>
+        </div>
+        <div class="row">
+          <dt class="label">Country:</dt>
+          <dd class="value">{{ cases.country }}</dd>
+        </div>
+        <div class="row">
+          <dt class="label"><h2>Status:</h2></dt>
+          <dd class="value">
+            <h2>{{ cases.status }}</h2>
+          </dd>
+        </div>
+      </dl>
+    </mat-card-content>
+
+    <style>
+      .row {
+        display: flex;
+        flex-direction: row;
+      }
+      .label {
+        display: inline-block;
+        width: 80px;
+      }
+      .value {
+        display: inline-block;
+        width: calc(100% - 80px);
+      }
+    </style>
+
+    <mat-card-actions>
+      <a
+        mat-flat-button
+        color="primary"
+        [routerLink]="['/edit-cases', cases.id]"
+        ><mat-icon>edit</mat-icon> Cases</a
+      >
+      <a mat-flat-button color="warn" (click)="deleteCases(cases.id)"
+        ><mat-icon>delete</mat-icon> Cases</a
+      >
+    </mat-card-actions>
+  </mat-card>
+</div>
